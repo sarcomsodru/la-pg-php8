@@ -8,7 +8,7 @@ RUN apt-get update && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 COPY .env /var/www/html/
-COPY constructor.sh /var/www/html
+COPY construtor.sh /var/www/html
 RUN chmod +x /var/www/html/constructor.sh
 ENTRYPOINT ["/var/www/html/contructor.sh"]
 WORKDIR /var/www/html
