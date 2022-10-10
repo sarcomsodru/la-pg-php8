@@ -9,8 +9,8 @@ RUN apt-get update && \
 
 COPY .env /var/www/html/
 COPY construtor.sh /var/www/html
-RUN chmod +x /var/www/html/constructor.sh
-ENTRYPOINT ["/var/www/html/contructor.sh"]
+RUN chmod +x /var/www/html/construtor.sh
+ENTRYPOINT ["/var/www/html/contrutor.sh"]
 WORKDIR /var/www/html
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
 RUN php composer-setup.php --install-dir=/usr/local/bin --filename=composer
