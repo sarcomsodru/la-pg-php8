@@ -1,0 +1,44 @@
+version: '3.7'
+services:
+  nginx:
+    image: nginx:stable-alpine
+    container_name: nginx
+    ports:
+      - 80:80
+    restart: always
+    volumes:
+      - /var/www/html/:/var/www/html
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - php
+      - psql
+    networks:
+      - laravel
+  psql:
+      container_name: postgres
+      image: postgres:12
+      restart: always
+      environment:
+          POSTGRES_USER: admin
+          POSTGRES_PASSWORD: laravel
+          POSTGRES_DB: laraveldb
+      ports:
+        - 5432:5432
+      volumes:
+        - ./postgres_data:/var/lib/postgresql/data
+      networks:
+        - laravel
+  php:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: php
+    volumes:
+      - /var/www/html/:/var/www/html
+    ports:
+      - 9000:80
+    networks:
+      - laravel
+networks:
+  laravel:
+
