@@ -17,10 +17,10 @@ RUN mv composer.phar /usr/local/bin/composer
 #RUN chmod +x /var/www/html/construtor.sh
 #ENTRYPOINT ["/var/www/html/contrutor.sh"]
 WORKDIR /var/www/html
-RUN git clone https://edmenn@bitbucket.org/edmenn/gestapp.git
-RUN mv gestapp/*  ./
+#RUN git clone https://edmenn@bitbucket.org/edmenn/gestapp.git
+#RUN mv gestapp/*  ./
 RUN ls -la
-RUN chmod 777 -R /var/www/html/ 
+#RUN chmod 777 -R /var/www/html/ 
 RUN composer install
 RUN php artisan migrate
 RUN php artisan db:seed
