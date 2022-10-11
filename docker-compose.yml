@@ -12,7 +12,7 @@ services:
     depends_on:
       - php
       - psql
-     command: ["./construtot.sh"]
+     command: ["./construtor.sh"]
     networks:
       - laravel
   psql:
