@@ -11,9 +11,9 @@ COPY .env /var/www/html/
 #RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
 RUN wget https://raw.githubusercontent.com/composer/getcomposer.org/76a7060ccb93902cd7576b67264ad91c8a2700e2/web/installer -O - -q | php -- --quiet
 RUN mv composer.phar /usr/local/bin/composer
-#RUN php composer-setup.php
+RUN php composer-setup.php
 #RUN php -r "unlink('composer-setup.php');"
-#RUN sudo mv composer.phar /usr/local/bin/composer
+#RUN mv composer.phar /usr/local/bin/composer
 #RUN chmod +x /var/www/html/construtor.sh
 #ENTRYPOINT ["/var/www/html/contrutor.sh"]
 WORKDIR /var/www/html
